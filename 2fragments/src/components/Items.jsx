@@ -1,10 +1,14 @@
 import styles from'./Items.module.css'
 
-const Items=({Items})=>{
+
+
+const Items=({Items,bought,handleBuyButtonClicked})=>{
     return(
-        <li className={`${styles['kg-items']} list-group-item`}>
+        <li className={`${styles['kg-items']} list-group-item ${bought && "active" }`}>
             <span className='kg-span'>{Items}</span>
-            <span><link rel="stylesheet" href="https://www.youtube.com/watch?v=-ueKEIUeMTA" /></span>
+            <button className={`${styles['button']} btn btn-light`}
+            onClick={handleBuyButtonClicked}
+            >Buy</button>
         </li>
     )
 };
