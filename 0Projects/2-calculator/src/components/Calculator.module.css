@@ -1,0 +1,19 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+}
+
+.calculator{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    background-color: rgb(154, 154, 247);
+    height: 50vh;
+    width: 60vh;
+    margin-top: 35vh;
+}
+
+
