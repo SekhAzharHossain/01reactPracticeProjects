@@ -3,6 +3,7 @@ import AddToDo from "./components/AddToDo"
 import ToDoItem from "./components/ToDoItem"
 import { useState } from "react";
 import Welcome from "./components/Welcome";
+import { TodoItemContext } from "./store/todo-items-store";
 
 function App() {
 
@@ -21,15 +22,19 @@ function App() {
     // console.log(`Item Deleted :${todoItemName}`)
   }
 
+  const defaultToDoItems=[{name:'Buy ghee',dueDate:"today"}]
+
   return (
-    <center className='todo-container'>
-      <AppName/>
-      <div className="container text-center">
-        <AddToDo onNewItem={handleNewItem}/>
-      </div>
-      {todoItems.length===0 && <Welcome/>}
-      <ToDoItem todoItems={todoItems} onDeleteClick={handleDeleteItem}/>
-    </center>
+    <TodoItemContext.Provider value={[defaultToDoItems]}>
+      <center className='todo-container'>
+        <AppName/>
+        <div className="container text-center">
+          <AddToDo onNewItem={handleNewItem}/>
+        </div>
+        <Welcome todoItems={todoItems}/>
+        <ToDoItem todoItems={todoItems} onDeleteClick={handleDeleteItem}/>
+      </center>
+    </TodoItemContext.Provider>
   )
 }
 
