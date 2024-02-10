@@ -1,5 +1,8 @@
 import { Children, createContext, useReducer } from "react";
 
+const addPost = () => {};
+const deletePost = () => {};
+
 const DEFAULT_CONTEXT = {
   PostList: [],
   addPost: () => {},
@@ -13,14 +16,11 @@ const postListReducer = (currPostList, action) => {
 };
 
 const PostListProvider = ({ Children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_CONTEXT
-  );
-
-  const addPost = () => {};
-
-  const deletePost = () => {};
+  const [postList, dispatchPostList] = useReducer(postListReducer, {
+    postList: [],
+    addPost,
+    deletePost,
+  });
 
   return (
     <PostList.Provider value={[{ postList, addPost, deletePost }]}>
